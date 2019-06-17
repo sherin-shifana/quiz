@@ -1,0 +1,40 @@
+{
+        "title": "New Content",
+        "majorVersion": 1,
+        "minorVersion": 0,
+        "patchVersion": 0,
+        "runnable": 1,
+        "machineName": "H5P.NewContent",
+        "author": "H5P-SPACE",
+        "license": "MIT",
+        "embedTypes": ["iframe"],
+        "preloadedDependencies":[
+                {
+                    "machineName":"H5P.JoubelUI",
+                    "majorVersion":1,
+                    "minorVersion":3
+                }
+         ],
+         "preloadedJs": [
+           {
+             "path": "main.js"
+           }
+         ],
+         "preloadedCss": [
+           {
+             "path": "main.css"
+           }
+         ],
+         "editorDependencies": [
+                {
+                  "machineName": "H5PEditor.RangeList",
+                  "majorVersion": 1,
+                  "minorVersion": 0
+                },
+                {
+                  "machineName": "H5PEditor.RadioGroup",
+                  "majorVersion": 1,
+                  "minorVersion": 1
+                }
+        ]
+}

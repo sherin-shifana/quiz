@@ -1,0 +1,125 @@
+[
+  {
+        "name": "titleScreen",
+        "type": "group",
+        "label": "Title Screen",
+        "expanded": true,
+        "fields": [
+            {
+                "name": "title",
+                "type": "group",
+                "label": "Title",
+                "expanded": true,
+                "fields": [
+                    {
+                        "name": "text",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "name": "display",
+                        "type": "boolean",
+                        "label": "Display Title",
+                        "description": "Wether or not to show the title as a headline at the start of the personality quiz.",
+                        "default": true
+                    }
+                ]
+            },
+            {
+                "name": "image",
+                "type": "group",
+                "label": "Optional: Image",
+                "optional": true,
+                "fields": [
+                    {
+                        "name": "file",
+                        "type": "image",
+                        "label": "File"
+                    },
+                    {
+                        "name": "alt",
+                        "type": "text",
+                        "label": "Alt text",
+                        "description": "Alternative text if the browser is unable to load the image."
+                    }
+                ]
+            }
+        ]
+      },
+      {
+        "name": "questions",
+        "type": "list",
+        "label": "Questions",
+        "entity": "question",
+        "field": {
+            "name": "question",
+            "type": "group",
+            "label": "Question",
+            "fields": [
+                {
+                    "name": "text",
+                    "type": "text",
+                    "label": "Question"
+                },
+                {
+                    "name": "id",
+                    "type": "number",
+                    "label": "Question Id"
+                },
+                {
+                    "name":"score",
+                    "type":"number",
+                    "label":"Score",
+                    "placeholder": "Specify the score for this question"
+                },
+                {
+                    "name": "answers",
+                    "type": "list",
+                    "label": "Answers",
+                    "entity": "answer",
+                    "min": 2,
+                    "max": 6,
+                    "field": {
+                        "name": "answer",
+                        "type": "group",
+                        "label": "Answer",
+                        "fields": [
+                            {
+                                "name": "text",
+                                "type": "text",
+                                "label": "text"
+                            },
+                            {
+                                "name": "feedback",
+                                "type": "text",
+                                "label": "Feedback",
+                                "optional": true
+                            },
+                            {
+                                "name": "image",
+                                "type": "group",
+                                "label": "Optional: Image",
+                                "description": "Image displayed at the top of the screen above or below the question text.",
+                                "optional": true,
+                                "fields": [
+                                    {
+                                        "name": "file",
+                                        "type": "image",
+                                        "label": "File"
+                                    },
+                                    {
+                                        "name": "alt",
+                                        "type": "text",
+                                        "label": "Alt text",
+                                        "description": "Alternative text if the browser is unable to load the image."
+                                    }
+                                ]
+                            }
+                        ]
+                   }
+               }
+            ]
+         }
+      }
+
+]
