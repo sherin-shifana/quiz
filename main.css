@@ -31,12 +31,11 @@
   border-radius: 3px;
 }
 .title-image {
-  /* min-height: 250px; */
   margin:0.5em 0 0.5em 0;
-  max-width: 35%;
+  max-width: 20%;
   max-height: 60%
 }
-.start-button {
+.start-button, .prev-button, .next-button {
   color: #fff !important;
   width: 8em;
   background: transparent !important;
@@ -51,7 +50,37 @@
   border: solid 1px white !important;
 }
 
-.start-button:hover {
+.start-button:hover, .prev-button:hover, .next-button:hover {
   color: #192030 !important;
   background: #dce0d9 !important;
+}
+
+.prev-button {
+  margin-right:2em ;
+}
+
+
+.answer-div {
+  display: inline-block;
+  min-width: 15%;
+  max-width: 20% !important;
+  margin: 1em;
+  background-color: rgba(242, 242, 242, 0.3);
+  padding:.5em;
+  border-radius: 0.5em;
+}
+.answer-div:hover{
+  cursor: pointer;
+  /* background: linear-gradient(
+  #7f857a, #7f857a 50%, #111622 50%, #111622
+  ); */
+  background: rgb(17,22,34);
+background: linear-gradient(0deg, rgba(17,22,34,1) 40%, rgba(127,133,122,1) 50%); 
+}
+.answer-text {
+  font-size: 1em;
+  font-weight: 500;
+}
+.answer-image {
+  max-width: 100% !important;
 }
