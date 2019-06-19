@@ -17,12 +17,13 @@
   height: 100%;
   width: 100%;
 }
-.title-card, .question-card{
+.title-card, .question-card, .score-board{
   text-align: center;
   margin:0.5em;
   min-height: 320px;
+  max-height:100%;
 }
-.title-text, .question {
+.title-text, .question, .score-title, .feedback-title, .score {
   min-height:40px;
   background-color: #dce0d9;
   color: #192030;
@@ -75,7 +76,7 @@
   #7f857a, #7f857a 50%, #111622 50%, #111622
   ); */
   background: rgb(17,22,34);
-background: linear-gradient(0deg, rgba(17,22,34,1) 40%, rgba(127,133,122,1) 50%); 
+background: linear-gradient(0deg, rgba(17,22,34,1) 40%, rgba(127,133,122,1) 50%);
 }
 .answer-text {
   font-size: 1em;
@@ -83,4 +84,61 @@ background: linear-gradient(0deg, rgba(17,22,34,1) 40%, rgba(127,133,122,1) 50%)
 }
 .answer-image {
   max-width: 100% !important;
+}
+.score-div{
+  width:25%;
+  margin-right: 5%;
+}
+.feedback-div {
+  width:65%;
+}
+.score-div, .feedback-div {
+  display: inline-block;
+}
+.score {
+  font-size: 5em;
+  padding-bottom: 1em;
+  text-align: center;
+  margin-top:.5em;
+  height: auto;
+  background-color: rgba(255,255,255,0.5);
+}
+.feedback{
+  padding-bottom: 1em;
+  text-align: center;
+  margin-top:.5em;
+  height: auto;
+}
+
+@-webkit-keyframes spaceboots {
+	0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+	10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); }
+	30% { -webkit-transform: translate(0px, 2px) rotate(0deg); }
+	40% { -webkit-transform: translate(1px, -1px) rotate(1deg); }
+
+}
+.score {
+	-webkit-animation-name: spaceboots;
+	-webkit-animation-duration: 1s;
+	-webkit-transform-origin:50% 50%;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+.table ul {
+  width:auto;
+  margin-right: 5%;
+  justify-content: space-between;
+  display: flex;
+}
+.table li {
+  list-style-type: none;
+  display: inline-block;
+  background-color: #dce0d9;
+  color: #192030;
+  padding-top:.1em;
+  font-weight: bold;
+  border-radius: 3px;
+  /* margin-right:0.2em; */
+  padding: 0.3em;
 }

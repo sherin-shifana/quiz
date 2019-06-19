@@ -67,7 +67,7 @@
                     "label": "Question Id"
                 },
                 {
-                    "name":"score",
+                    "name":"actualScore",
                     "type":"number",
                     "label":"Score",
                     "placeholder": "Specify the score for this question"
@@ -94,6 +94,12 @@
                                 "type": "text",
                                 "label": "Feedback",
                                 "optional": true
+                            },
+                            {
+                                "name":"score",
+                                "type":"number",
+                                "label":"Score",
+                                "placeholder": "Specify the score for this answer"
                             },
                             {
                                 "name": "image",
