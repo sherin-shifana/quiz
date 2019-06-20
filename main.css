@@ -31,6 +31,10 @@
   font-weight: bold;
   border-radius: 3px;
 }
+.question {
+  padding-top: 0 !important;
+  padding-bottom: 1em;
+}
 .title-image {
   margin:0.5em 0 0.5em 0;
   max-width: 20%;
@@ -65,6 +69,7 @@
   display: inline-block;
   min-width: 15%;
   max-width: 20% !important;
+  min-height:25%;
   margin: 1em;
   background-color: rgba(242, 242, 242, 0.3);
   padding:.5em;
@@ -72,31 +77,36 @@
 }
 .answer-div:hover{
   cursor: pointer;
-  /* background: linear-gradient(
-  #7f857a, #7f857a 50%, #111622 50%, #111622
-  ); */
   background: rgb(17,22,34);
-background: linear-gradient(0deg, rgba(17,22,34,1) 40%, rgba(127,133,122,1) 50%);
+  background: linear-gradient(0deg, rgba(17,22,34,1) 40%, rgba(127,133,122,1) 50%);
 }
+
 .answer-text {
   font-size: 1em;
   font-weight: 500;
 }
 .answer-image {
-  max-width: 100% !important;
+  width: 100% !important;
+  max-height: 7em !important;
+  min-height: 5em;
+}
+.score-board {
+  display: flex;
+  text-align: center;
 }
 .score-div{
-  width:25%;
-  margin-right: 5%;
+  width:28%;
+  margin-right: 2%;
 }
 .feedback-div {
-  width:65%;
+  width:70%;
+  /* justify-content: space-between; */
 }
 .score-div, .feedback-div {
   display: inline-block;
 }
 .score {
-  font-size: 5em;
+  font-size:3em ;
   padding-bottom: 1em;
   text-align: center;
   margin-top:.5em;
@@ -105,7 +115,7 @@ background: linear-gradient(0deg, rgba(17,22,34,1) 40%, rgba(127,133,122,1) 50%)
 }
 .feedback{
   padding-bottom: 1em;
-  text-align: center;
+  /* text-align: center; */
   margin-top:.5em;
   height: auto;
 }
@@ -125,20 +135,33 @@ background: linear-gradient(0deg, rgba(17,22,34,1) 40%, rgba(127,133,122,1) 50%)
 	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-timing-function: linear;
 }
-.table ul {
-  width:auto;
-  margin-right: 5%;
-  justify-content: space-between;
-  display: flex;
+
+.progress {
+  background-color: #0059b3;
+  width:1%;
+  height:.5em;
+  top:0;
+  border-top-left-radius: .2em;
+  margin-bottom: .5em;
 }
-.table li {
-  list-style-type: none;
-  display: inline-block;
-  background-color: #dce0d9;
+.feedback {
+  /* overflow: scroll !important; */
+}
+.feedback table{
+  width:100%;
+  border-radius: 0.3em;
+
+}
+td{
+  background: #dce0d9;
   color: #192030;
-  padding-top:.1em;
-  font-weight: bold;
-  border-radius: 3px;
-  /* margin-right:0.2em; */
-  padding: 0.3em;
+  margin:0.5em;
+  padding: 0.2em;
+  min-width:2em;
+}
+
+.td {
+  background: #cbd1c7;
+  display: list-item;
+  list-style-type: none;
 }

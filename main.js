@@ -9,17 +9,20 @@ H5P.NewContent = (function ($, UI) {
 
   // Create Title Screen
   NewContent.prototype.createTitleScreen = function () {
+    const that = this;
     this.$card = $('<div class="title-card"></div>');
     this.$title = $('<div class="title-text">'+this.options.titleScreen.title.text+'</div>');
-    if (this.options.titleScreen.image.file) {
+    const hasTitleImage = this.options.titleScreen.image.file ? true:false;
+    if (hasTitleImage) {
       const path = H5P.getPath(this.options.titleScreen.image.file.path,this.id);
       this.$titleImage = $('<img>', {
             'class': 'title-image',
             'src': path
-      });
+      }).appendTo(that.$card);
+
     }
     this.$title.appendTo(this.$card);
-    this.$titleImage.appendTo(this.$card);
+
     return this.$card;
   }
 
@@ -47,8 +50,32 @@ H5P.NewContent = (function ($, UI) {
   // Feedback for Answers
   NewContent.prototype.createFeedback = function () {
     const that = this;
+    this.$tableDiv = $('<table></table>');
+    for (let i=0; i<this.options.questions.length; i++) {
+      this.$row = $('<tr></tr>');
+      this.$col1 = $('<td>'+(i+1)+'</td>');
+      this.$col2 = $('<td>'+this.options.questions[i].text+'</td>');
+      this.$col3 = $('<td></td>');
+      this.$col4 = $('<td></td>');
+      this.$col5 = $('<td></td>');
+      for (let j = 0; j < this.options.questions[i].answers.length; j++) {
 
-    
+        this.$coli1 = $('<td class="td" scope="row" data-id='+i+'.'+j+'>'+this.options.questions[i].answers[j].text+'</td><br>');
+        this.$coli2= $('<td class="td" scope="row" data-id='+i+'.'+j+'>'+this.options.questions[i].answers[j].score+'</td><br>');
+        this.$coli3 = $('<td class="td" scope="row" data-id='+i+'.'+j+'>'+this.options.questions[i].answers[j].feedback+'</td><br>');
+
+        this.$coli1.appendTo(that.$col3);
+        this.$coli2.appendTo(that.$col4);
+        this.$coli3.appendTo(that.$col5);
+      }
+      this.$col1.appendTo(this.$row);
+      this.$col2.appendTo(this.$row);
+      this.$col3.appendTo(that.$row);
+      this.$col4.appendTo(that.$row);
+      this.$col5.appendTo(that.$row);
+      this.$row.appendTo(that.$tableDiv);
+    }
+
   };
 
   // Show Final Screen
@@ -86,8 +113,16 @@ H5P.NewContent = (function ($, UI) {
     this.totalScore = 0;
     for (let j=0; j<this.options.questions.length; j++){
       this.$questionCard = $('<div class="question-card"></div>');
-      this.$question = $('<div class="question">'+this.options.questions[j].id+'. '+this.options.questions[j].text+'</div>');
+      this.$question = $('<div class="question"></div>');
+      that.$progressBar = $('<div class="progress"></div>').appendTo(this.$question);
+      this.$question.append(this.options.questions[j].id+'. '+this.options.questions[j].text);
       this.$question.appendTo(this.$questionCard);
+      this.progress = ((j)/this.options.questions.length)*100 + '%';
+      console.log(this.progress);
+      if (j==0){
+        this.progress = '1%';
+      }
+      that.$progressBar.css('width',this.progress);
       this.actualScore += that.options.questions[j].actualScore;
 
       for (let i=0;i<this.options.questions[j].answers.length;i++) {
@@ -111,6 +146,7 @@ H5P.NewContent = (function ($, UI) {
           }
         });
       }
+
       that.dataId=1;
       this.$questionCards.push(this.$questionCard);
     }
@@ -127,6 +163,8 @@ H5P.NewContent = (function ($, UI) {
   // Show Question
   NewContent.prototype.showQuestion = function () {
     const that = this;
+    console.log(this.options.questions.length);
+    console.log(that.$progressBar);
     if (that.currentIndex > 0) {
           this.prevIndex = that.currentIndex - 1;
           that.$questionCards[this.prevIndex].remove();
