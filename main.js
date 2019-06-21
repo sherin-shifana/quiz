@@ -64,6 +64,11 @@ H5P.NewContent = (function ($, UI) {
         this.$coli2= $('<td class="td" scope="row" data-id='+i+'.'+j+'>'+this.options.questions[i].answers[j].score+'</td><br>');
         this.$coli3 = $('<td class="td" scope="row" data-id='+i+'.'+j+'>'+this.options.questions[i].answers[j].feedback+'</td><br>');
 
+        if (this.$coli1[0].innerText === that.$selected[i][0].innerText) {
+          this.$coli1.addClass('selected-answer');
+        }
+        // console.log(this.$coli1[i]);
+
         this.$coli1.appendTo(that.$col3);
         this.$coli2.appendTo(that.$col4);
         this.$coli3.appendTo(that.$col5);
@@ -108,6 +113,7 @@ H5P.NewContent = (function ($, UI) {
   NewContent.prototype.createQuestionCard = function () {
     const that = this;
     this.$questionCards = [];
+    this.$selected = [];
     this.actualScore = 0;
     that.dataId = 1;
     this.totalScore = 0;
@@ -118,7 +124,7 @@ H5P.NewContent = (function ($, UI) {
       this.$question.append(this.options.questions[j].id+'. '+this.options.questions[j].text);
       this.$question.appendTo(this.$questionCard);
       this.progress = ((j)/this.options.questions.length)*100 + '%';
-      console.log(this.progress);
+      // console.log(this.progress);
       if (j==0){
         this.progress = '1%';
       }
@@ -136,7 +142,7 @@ H5P.NewContent = (function ($, UI) {
           this.score = that.options.questions[j].answers[i].score;
           that.calculateScore(this.score);
           this.isAnswered = true;
-
+          that.$selected.push($(this));
           if (that.currentIndex < that.$questionCards.length-1) {
             that.currentIndex = that.currentIndex + 1;
             that.showQuestion();
@@ -145,10 +151,14 @@ H5P.NewContent = (function ($, UI) {
             that.showFinalScreen();
           }
         });
+        // console.log(that.$selected);
+
+
       }
 
       that.dataId=1;
       this.$questionCards.push(this.$questionCard);
+
     }
     return this.$questionCards;
   };
@@ -163,8 +173,8 @@ H5P.NewContent = (function ($, UI) {
   // Show Question
   NewContent.prototype.showQuestion = function () {
     const that = this;
-    console.log(this.options.questions.length);
-    console.log(that.$progressBar);
+    // console.log(this.options.questions.length);
+    // console.log(that.$progressBar);
     if (that.currentIndex > 0) {
           this.prevIndex = that.currentIndex - 1;
           that.$questionCards[this.prevIndex].remove();
@@ -206,7 +216,7 @@ H5P.NewContent = (function ($, UI) {
       html:'<i class="fa fa-angle-double-right" aria-hidden="true"></i>',
       'class': 'next-button',
       click: function(){
-        console.log(that.$questionCards.length);
+        // console.log(that.$questionCards.length);
         if (that.currentIndex < that.$questionCards.length-1) {
           that.$questionCards[that.currentIndex].remove();
           that.createQuestionCard();

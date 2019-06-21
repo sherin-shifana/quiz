@@ -165,3 +165,8 @@ td{
   display: list-item;
   list-style-type: none;
 }
+
+.selected-answer {
+  background: #192030;
+  color: #dce0d9;
+}
